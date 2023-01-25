@@ -1,6 +1,5 @@
 package com.voronkov;
 
-
 public class Product {
     private int id;
     private final String name;
@@ -37,3 +36,4 @@ public class Product {
                 '}';
     }
 }
+
