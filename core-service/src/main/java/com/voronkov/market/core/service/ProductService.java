@@ -16,7 +16,7 @@ import java.util.Optional;
 public class ProductService {
 
     private final ProductRep productRepository;
-    private final CategoryService categoryServise;
+    private final CategoryService categoryService;
 
     public List<Product> findAll(){return productRepository.findAll();}
     public Optional<Product> findById(Long id){
@@ -31,8 +31,8 @@ public class ProductService {
         Product product = new Product();
         product.setTitle(productDto.getTitle());
         product.setPrice(productDto.getPrice());
-//        Category category = categoryServise.findByTitle(productDto.getCategoryTitle()).orElseThrow(() -> new ResourceNotFoundException("Не найден товар по категории"));
-//        product.setCategory(category);
+        Category category = categoryService.findByTitle(productDto.getCategoryTitle()).orElseThrow(() -> new ResourceNotFoundException("Не найден товар по категории"));
+        product.setCategory(category);
         productRepository.save(product);
         return product;
     }

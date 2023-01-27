@@ -1,7 +1,7 @@
 package com.voronkov.market.core.service;
 
 import com.voronkov.market.core.entity.OrderItem;
-import com.voronkov.market.core.repo.OrderDetailsRepository;
+import com.voronkov.market.core.repo.OrderItemsRepository;
 import lombok.Data;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -13,14 +13,14 @@ import java.util.List;
 @RequiredArgsConstructor
 public class OrderItemService {
 
-    private final OrderDetailsRepository orderDetailsRepository;
+    private final OrderItemsRepository orderDetailsRepository;
 
     public OrderItem save(OrderItem orderItem) {
         return orderDetailsRepository.save(orderItem);
     }
 
     public List<OrderItem> findAllByOrderId(Long id){
-        return orderDetailsRepository.findOrderDetailsByOrder_Id(id);
+        return orderDetailsRepository.findOrderItemsByOrderId(id);
 
     }
 }

@@ -30,6 +30,7 @@ public class SecurityConfig {
                 .authorizeRequests(auth ->
                         auth.anyRequest().permitAll()
                 )
+
                 .sessionManagement(sm -> sm.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
                 .headers(header -> header.frameOptions().disable())
                 .exceptionHandling()
