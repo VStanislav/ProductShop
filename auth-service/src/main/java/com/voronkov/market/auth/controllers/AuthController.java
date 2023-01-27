@@ -3,6 +3,7 @@ package com.voronkov.market.auth.controllers;
 import com.voronkov.market.api.AppError;
 import com.voronkov.market.api.JwtRequest;
 import com.voronkov.market.api.JwtResponse;
+import com.voronkov.market.auth.entity.User;
 import com.voronkov.market.auth.service.JWTService;
 import com.voronkov.market.auth.service.UserService;
 import lombok.RequiredArgsConstructor;
@@ -13,13 +14,14 @@ import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.BadCredentialsException;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.userdetails.UserDetails;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 
 @RestController
 @RequiredArgsConstructor
+@CrossOrigin("*")
 @Slf4j
 public class AuthController {
     private final UserService userService;
@@ -37,5 +39,10 @@ public class AuthController {
         UserDetails userDetails = userService.loadUserByUsername(authRequest.getUsername());
         String token = jwtService.generateToken(userDetails);
         return ResponseEntity.ok(new JwtResponse(token));
+    }
+
+    @GetMapping("/users")
+    public List<User> findAllUsers(){
+        return userService.findAll();
     }
 }
