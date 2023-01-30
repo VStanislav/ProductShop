@@ -18,7 +18,6 @@ import java.util.concurrent.TimeUnit;
 @EnableConfigurationProperties(CartServiceIntegrationProperties.class)
 @RequiredArgsConstructor
 public class AppConfig {
-
     private final CartServiceIntegrationProperties cartServiceIntegrationProperties;
 
     @Bean
@@ -29,7 +28,8 @@ public class AppConfig {
                     connection.addHandlerLast(new ReadTimeoutHandler(cartServiceIntegrationProperties.getReadTimeout(), TimeUnit.MILLISECONDS));
                     connection.addHandlerLast(new WriteTimeoutHandler(cartServiceIntegrationProperties.getWriteTimeout(), TimeUnit.MILLISECONDS));
                 });
-        return WebClient.builder()
+        return WebClient
+                .builder()
                 .baseUrl(cartServiceIntegrationProperties.getUrl())
                 .clientConnector(new ReactorClientHttpConnector(reactor.netty.http.client.HttpClient.from(tcpClient)))
                 .build();

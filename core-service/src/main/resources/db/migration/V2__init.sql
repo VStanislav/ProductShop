@@ -29,6 +29,6 @@ CREATE TABLE IF NOT EXISTS order_items (
     order_id bigint references orders(id),
     quantity int,
     price_per_product int,
-    price int, PRIMARY KEY (id),
+    total_price int, PRIMARY KEY (id),
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP);

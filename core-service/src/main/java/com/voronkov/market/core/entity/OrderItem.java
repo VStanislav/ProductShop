@@ -26,8 +26,11 @@ public class OrderItem {
     @Column(name = "quantity")
     private Integer quantity;
 
-    @Column(name = "product_price")
-    private int price;
+    @Column(name = "price_per_product")
+    private int pricePerProduct;
+
+    @Column(name = "total_price")
+    private int totalPrice;
 
     @ManyToOne
     @JoinColumn(name = "product_id")
@@ -41,11 +44,12 @@ public class OrderItem {
     @Column(name = "updated_at")
     private LocalDateTime updated_at;
 
-    public OrderItem(Product product, Order order, int quantity, int pricePerProduct, int price) {
+    public OrderItem(Product product, Order order, int quantity, int pricePerProduct, int totalPrice) {
         this.quantity = quantity;
-        this.price = price;
+        this.totalPrice = totalPrice;
         this.order = order;
         this.product = product;
+        this.pricePerProduct=pricePerProduct;
     }
 }
 

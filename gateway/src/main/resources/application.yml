@@ -27,7 +27,6 @@ spring:
           uri: http://localhost:9100
           predicates:
             - Path=/cart/**
-          #            - Header=Authorization, Bearer (.*)
           filters:
             - StripPrefix=1
             - PrefixPath=/market-cart
