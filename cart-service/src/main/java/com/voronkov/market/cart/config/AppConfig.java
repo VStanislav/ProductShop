@@ -14,9 +14,9 @@ import reactor.netty.tcp.TcpClient;
 
 import java.util.concurrent.TimeUnit;
 
+@Configuration
 @RequiredArgsConstructor
 @EnableConfigurationProperties(ProductServiceIntegrationProperties.class)
-@Configuration
 public class AppConfig {
     private final ProductServiceIntegrationProperties productServiceIntegrationProperties;
 

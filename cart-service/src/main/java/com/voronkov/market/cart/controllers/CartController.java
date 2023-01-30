@@ -4,14 +4,12 @@ import com.voronkov.market.api.CartDto;
 import com.voronkov.market.cart.converter.CartConverter;
 import com.voronkov.market.cart.services.CartService;
 import lombok.RequiredArgsConstructor;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("/api/v1/cart")
 @RequiredArgsConstructor
+@CrossOrigin("*")
 public class CartController {
     private final CartService cartService;
     private final CartConverter cartConverter;
